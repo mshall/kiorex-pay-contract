@@ -1,0 +1,27 @@
+{
+  "name": "@kiorex/pay-contract",
+  "version": "0.1.0",
+  "description": "Kiorly Pay shared payment adapter contract: neutral adapter/event types, bank IPN adapter, wallet skeleton, invoice matching, payment links and QR, provider routing, fraud scorer (shadow), rollups and exports. Pure TypeScript, no network, no runtime dependencies. Consumed by kiorex-platform Pay and the Clinic billing.",
+  "license": "UNLICENSED",
+  "private": false,
+  "type": "module",
+  "engines": { "node": ">=24.0.0" },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+      "require": { "types": "./dist/index.d.cts", "default": "./dist/index.cjs" }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsup",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "pack:local": "npm run build && mkdir -p dist-pack && npm pack --pack-destination dist-pack"
+  },
+  "devDependencies": { "@types/node": "^26.6.6", "tsup": "^9.0.0", "typescript": "~5.9.3", "vitest": "^5.1.1" }
+}
